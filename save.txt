@@ -1,0 +1,24 @@
+filtered.forEach(item => {
+	if (exit) return
+	console.log(exit + " - exit variable status")
+	//Случайный переход
+	const randomIndex = getRandomIndex()
+	const randomTransition = transitionsCoord[randomIndex]
+	robot.moveMouse(110, 645)
+	robot.setMouseDelay(200)
+	robot.mouseClick()
+	robot.setMouseDelay(200)
+	//Сброс выделения
+	robot.moveMouse(60, 600)
+	robot.setMouseDelay(200)
+	robot.mouseClick()
+	robot.setMouseDelay(200)
+	typeText(item)
+	//Ввод в таймлайн
+	robot.moveMouse(randomTransition.x, randomTransition.y)
+	robot.setMouseDelay(200)
+	robot.mouseClick()
+	//Переход
+	if (exit) return;
+})
+ 
