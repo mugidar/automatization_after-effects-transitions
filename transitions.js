@@ -68,16 +68,16 @@ const timecodes = `
 const missedVideos = [31, 40, 48]
 //Координаты переходов
 const transitionsCoord = [
-	{ x: 1750, y: 450 },
-	{ x: 1785, y: 450 },
-	{ x: 1825, y: 450 }
+	{ x: 1600, y: 512},
+	{ x: 1650, y: 512},
+	{ x: 1690, y: 512}
 ]
 //Таймкоды без переносов
 const timecodesArr = timecodes.split(/\r?\n/)
 timecodesArr.shift()
 //Таймкоды без выпавших видео
 const filtered = timecodesArr.filter((item, index) => {
-	return missedVideos.indexOf(index) === -1
+	return missedVideos.indexOf(index+1) === -1
 })
 ///////////////SETTINGS///////////////////
 function getRandomIndex() {
@@ -97,27 +97,30 @@ listener.addListener(function (e, down) {
 
 })
 
+
+
 async function processItems() {
 	for (const item of filtered) {
 		if (exit) break
 		//Случайный переход
 		const randomIndex = getRandomIndex()
 		const randomTransition = transitionsCoord[randomIndex]
+	//Сброс выделения
 		robot.moveMouse(110, 645)
-		robot.setMouseDelay(200)
+		robot.setMouseDelay(500)
 		robot.mouseClick()
-		robot.setMouseDelay(200)
-		//Сброс выделения
+		robot.setMouseDelay(500)
+	//Ввод в таймлайн
 		robot.moveMouse(60, 600)
-		robot.setMouseDelay(200)
+		robot.setMouseDelay(500)
 		robot.mouseClick()
-		robot.setMouseDelay(200)
+		robot.setMouseDelay(500)
 		typeText(item)
-		//Ввод в таймлайн
+	//Переход
 		robot.moveMouse(randomTransition.x, randomTransition.y)
-		robot.setMouseDelay(200)
+		robot.setMouseDelay(500)
 		robot.mouseClick()
-		//Переход
+		
 
 		await new Promise(resolve => setTimeout(resolve, 1))
 		if (exit) break
@@ -127,3 +130,4 @@ async function processItems() {
 processItems().then(() => {
 	console.log('Loop completed.')
 })
+ 
