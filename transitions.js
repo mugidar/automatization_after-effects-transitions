@@ -5,7 +5,7 @@ const listener = new GlobalKeyboardListener()
 
 const timecodes = ``
 //Выпавшие видео
-const missedVideos = [31, 40, 48]
+const missedVideos = []
 //Координаты переходов
 const transitionsCoord = [
 	{ x: 1600, y: 512},
