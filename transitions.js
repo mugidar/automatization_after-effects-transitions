@@ -3,10 +3,16 @@ const { GlobalKeyboardListener } = require('node-global-key-listener')
 
 const listener = new GlobalKeyboardListener()
 
+<<<<<<< HEAD
 const timecodes = `
 `
 //Выпавшие видео
 // const missedVideos = []
+=======
+const timecodes = ``
+//Выпавшие видео
+const missedVideos = []
+>>>>>>> f9b43c6b4c8e8586f00c1e726ba60844f60f93c2
 //Координаты переходов
 const transitionsCoord = [
 	{ x: 1700, y: 512},
